@@ -1,11 +1,11 @@
-let query=''
+let term=''
 const handleQuery = () => {
-  query = document.querySelector('#search').value
+  term = document.querySelector('#search').value
   //Checks if there is a value exists
-  if(!query || query === ''){
+  if(!term || term === ''){
     alert('Please enter an artist or song name')
   } else {
-    const url='https://itunes.apple.com/search?term=queen' 
+    const url=`https://itunes.apple.com/search?term=${term}` 
 fetch(url)
 .then((response) => response.json())
 .then((data) => {
@@ -37,10 +37,10 @@ fetch(url)
 
 
 
-/*const searchBtn = document.getElementById('searchTermBtn') 
+ const searchBtn = document.querySelector('#searchBtn') 
 
 searchBtn.addEventListener('click', (e) => {
   e.preventDefault();
-
-})*/
+  handleQuery();
+}) 
   
