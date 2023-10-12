@@ -31,7 +31,7 @@ const handleQuery = () => {
      <h4>${result.trackName}</h4>
      `
      article.appendChild(audio)
-     audio.appendChild(audioSource)
+     audio.appendChild(audioSource) 
      sectionContainer.appendChild(article);
        
   })
@@ -50,4 +50,13 @@ searchBtn.addEventListener('click', (e) => {
   e.preventDefault();
   handleQuery();
 }) 
+
+document.addEventListener('play', event => {
+  const audio = document.getElementsByTagName('audio');
+  for (let i = 0; i < audio.length; i++) {
+      if (audio[i] != event.target) {
+          audio[i].pause();
+      }
+  }
+}, true)
   
