@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let term=''//Initializes term to an empty string
 const handleQuery = () => {
-  term = document.querySelector('#search').value
+  term = document.querySelector('#search').value.toLowerCase()
   //Checks if there is a value exists
   if(!term || term === ''){
     alert('Please enter an artist or song name')//A pop message that will appear of value is empty
@@ -14,8 +14,9 @@ const handleQuery = () => {
     while(sectionContainer.firstChild){
       sectionContainer.removeChild(sectionContainer.firstChild)
     }
+    //A GET request to our API
     fetch(url)
-     .then((response) => response.json())
+     .then((response) => response.json()) //Changes the response in JSON format
      .then((data) => {
     const artists= data.results; // Create artists to data fetched
 
@@ -25,6 +26,9 @@ const handleQuery = () => {
      const article = document.createElement('article')
      const audio = document.createElement('audio')
      const audioSource = document.createElement('source')
+     const addButton = document.createElement('button')
+     addButton.textContent='Add song'
+     addButton.classList.add('addBtn')
      audioSource.src = result.previewUrl
      audio.controls = true  
      article. innerHTML=`
@@ -34,15 +38,23 @@ const handleQuery = () => {
      `
      article.appendChild(audio);
      audio.appendChild(audioSource); //Allows manipulation of audio controls
-     sectionContainer.appendChild(article);// Appends the results depend on the search query to the DOM
+     article.appendChild(addButton);
+
+     sectionContainer.appendChild(article);// Appends the results depending on the search query to the DOM
+
+     addButton.addEventListener('click', (e) =>{
+      e.preventDefault
+      handlePlaylist(result)
+    }) 
        
   })
 
 })
-.catch(error => console.log('Request failed:', error))// Writes an error message to the console
+.catch(error => console.log('Request failed:', error))// Writes an error message to the console when a connection failure occurs 
 
   }
 }
+
 
 const searchBtn = document.querySelector('#searchBtn') 
 
@@ -50,6 +62,7 @@ const searchBtn = document.querySelector('#searchBtn')
 searchBtn.addEventListener('click', (e) => {
   e.preventDefault();
   handleQuery();
+  form.reset()
 }) 
 
 //Play evennt to stop songs from playing at the same time
@@ -61,6 +74,31 @@ document.addEventListener('play', event => {
       }
   }
 }, true)
+
+
+ function handlePlaylist(song) {
+  const playlist = document.getElementById('list');
+  const songItem = document.createElement('div');
+  const songAudio = document.createElement('audio');
+  const songAudioSource = document.createElement('source');
+  songAudioSource.src = song.previewUrl
+  songAudio.controls = true
+  songItem.innerHTML = `
+    <h2>My Playlist</h2>
+    <p>${song.artistName} - ${song.trackName}</p>
+  `;
+
+  songAudio.appendChild(songAudioSource);
+  songItem.appendChild(songAudio);
+  playlist.appendChild(songItem);
+}
+ 
+     
+     
+
+
+
+
 
 })
   
