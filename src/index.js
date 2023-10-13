@@ -84,13 +84,34 @@ document.addEventListener('play', event => {
   songAudioSource.src = song.previewUrl
   songAudio.controls = true
   songItem.innerHTML = `
-    <h2>My Playlist</h2>
+    <ol>
     <p>${song.artistName} - ${song.trackName}</p>
+    <ol>
   `;
-
   songAudio.appendChild(songAudioSource);
   songItem.appendChild(songAudio);
   playlist.appendChild(songItem);
+
+  let songObject = {
+    artist:song.artistName,
+    song:song.trackName,
+    previewUrl:song.previewUrl
+  }
+  
+  function createPlaylist(songObject){
+  fetch('http://localhost:3000/playlists',{
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body:JSON.stringify(songObject)
+  })
+  .then(res => res.json())
+  }
+
+  createPlaylist(songObject)
+
 }
  
      
