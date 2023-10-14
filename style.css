@@ -97,7 +97,7 @@ section {
 }
 
 section article {
-    width: calc(100% / 3 - 5px);
+    width: calc(100% / 2- 5px);
     border-radius: 3px;
     overflow: hidden;
     margin-bottom: 25px;
@@ -134,19 +134,20 @@ section article .addBtn:hover {
 
  h2 {
   font-family: 'Courier New', Courier, monospace;
-  text-align: center;
+  padding: 10px 5px;
 }
 
 #list {
   position: relative;
-  padding: 50px 20px;
+  padding: 10px 5px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: left;
   flex-wrap: wrap;
 }
 
 #list div{
-  width: calc(100% / 3 - 5px);
+  width: calc(100% / 1);
   border-radius: 3px;
   overflow: hidden;
   margin-bottom: 25px;
@@ -176,5 +177,10 @@ section article .addBtn:hover {
 #list .deleteBtn:hover{
   background-color: red;
 }
+#container{
   
- 
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  
+}
