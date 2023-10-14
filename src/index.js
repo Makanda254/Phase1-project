@@ -101,7 +101,7 @@ document.addEventListener('play', event => {
   renderPlaylist(songObject)
   }
  
-  //Function to create playlist by adding songs to the playlist section
+  //Function to get playlist data
   function fetchPlaylist(){
    fetch('http://localhost:3000/playlists')
    .then(response => response.json())
@@ -109,7 +109,7 @@ document.addEventListener('play', event => {
 
  }
 
- //A function to render your playlist when you the application is loaded
+ //A function to render your playlist on the page when you the application is loaded
  function renderPlaylist(playlists){
   const playlist = document.getElementById('list');
   const songItem = document.createElement('div');
@@ -130,7 +130,7 @@ document.addEventListener('play', event => {
 
     likeButton.addEventListener('click', () => {
     likeButton.style.color = 'red'; // Turn the button red when liked
-    updateLikedSong(songObject); // Call a function to update the server
+    updateLikedSong(playlists); // Call a function to update the server
  });
 
   songAudio.appendChild(songAudioSource);
@@ -140,22 +140,21 @@ document.addEventListener('play', event => {
 
  }
 
- 
+ //Calls the fetchPlaylist function
  fetchPlaylist()
 
 
  // A function for a PATCH request to update the liked song on the server
- /*  function updateLikedSong(storeObject) {
-  storeObject()
-  fetch(`http://localhost:3000/playlists/${songObject.id}`, {
+ function updateLikedSong(songObject) {
+  
+  fetch(`http://localhost:3000/playlists/${songObject.id}`,{
     method: 'PATCH',
     headers: {
-      'content-type': 'application/json',
+      'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
     body: JSON.stringify({
       liked: true
-
     })
   })
     .then(res => res.json())
@@ -166,7 +165,7 @@ document.addEventListener('play', event => {
 }
 
 // Calls the updateLikedSong function
-updateLikedSong(storeObject);*/
+//updateLikedSong(songObject);
 
 
 
