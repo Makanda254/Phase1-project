@@ -120,23 +120,39 @@ document.addEventListener('play', event => {
    songItem.innerHTML = `
      <ol>
     <p>${playlists.artist} - ${playlists.song}</p>
-    <ol>
+    </ol>
+    <div>
+
+    </div>
    `;
 
-   //Create a like emoji button
-  const likeButton = document.createElement('button');
-  likeButton.textContent = '❤️ Like'; // Use a heart emoji as the like button
-  likeButton.classList.add('likeBtn');
+    //Create a like emoji button
+    const likeButton = document.createElement('button');
+    likeButton.textContent = '❤️ Like'; // Use a heart emoji as the like button
+    likeButton.classList.add('likeBtn');
+
+
 
     likeButton.addEventListener('click', () => {
     likeButton.style.color = 'red'; // Turn the button red when liked
     updateLikedSong(playlists); // Call a function to update the server
  });
 
+   const deleteButton = document.createElement('button')
+   deleteButton.textContent = 'Delete'
+   deleteButton.classList.add('deleteBtn')
+
+   deleteButton.addEventListener('click', () => {
+    songItem.remove();
+    deleteSong(playlists.id);
+
+   })
+
   songAudio.appendChild(songAudioSource);
   songItem.appendChild(songAudio);
+  songItem.appendChild(likeButton);
+  songItem.appendChild(deleteButton);
   playlist.appendChild(songItem);
-  playlist.appendChild(likeButton);
 
  }
 
@@ -164,8 +180,19 @@ document.addEventListener('play', event => {
     .catch(error => console.error('Failed to update liked song:', error));
 }
 
-// Calls the updateLikedSong function
-//updateLikedSong(songObject);
+//Function for a delete request to delete a particular song from the playlist
+function deleteSong(id){
+ fetch(`http://localhost:3000/playlists/${id}`,{
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
+ })
+ .then(res => res.json())
+ .then((list)=> console.log(list))
+}
+
 
 
 
