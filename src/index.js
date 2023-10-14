@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let term=''//Initializes term to an empty string
 const handleQuery = () => {
-  term = document.querySelector('#search').value.toLowerCase()
+
+  term = document.querySelector('#search').value.toLowerCase()//stores the value inputed by the user in the term variable
+
   //Checks if there is a value exists
   if(!term || term === ''){
     alert('Please enter an artist or song name')//A pop message that will appear of value is empty
@@ -18,7 +20,7 @@ const handleQuery = () => {
     fetch(url)
      .then((response) => response.json()) //Changes the response in JSON format
      .then((data) => {
-    const artists= data.results; // Create artists to data fetched
+    const artists= data.results; // Create artists variable to store data fetched
 
     //Mapped the results in an array with the specified elements
     return artists.map(result => {
@@ -76,29 +78,16 @@ document.addEventListener('play', event => {
 }, true)
 
 
+//Function for a post request that creates a playlist object to the server
  function handlePlaylist(song) {
-  const playlist = document.getElementById('list');
-  const songItem = document.createElement('div');
-  const songAudio = document.createElement('audio');
-  const songAudioSource = document.createElement('source');
-  songAudioSource.src = song.previewUrl
-  songAudio.controls = true
-  songItem.innerHTML = `
-    <ol>
-    <p>${song.artistName} - ${song.trackName}</p>
-    <ol>
-  `;
-  songAudio.appendChild(songAudioSource);
-  songItem.appendChild(songAudio);
-  playlist.appendChild(songItem);
-
   let songObject = {
+    id:'',
     artist:song.artistName,
     song:song.trackName,
-    previewUrl:song.previewUrl
+    previewUrl:song.previewUrl,
+    liked: false
   }
-  
-  function createPlaylist(songObject){
+
   fetch('http://localhost:3000/playlists',{
     method: 'POST',
     headers: {
@@ -107,17 +96,83 @@ document.addEventListener('play', event => {
     },
     body:JSON.stringify(songObject)
   })
-  .then(res => res.json())
+  .then(res => res.json());
+
+  renderPlaylist(songObject)
   }
-
-  createPlaylist(songObject)
-
-}
  
-     
-     
+  //Function to create playlist by adding songs to the playlist section
+  function fetchPlaylist(){
+   fetch('http://localhost:3000/playlists')
+   .then(response => response.json())
+   .then(data => data.forEach(song => renderPlaylist(song)))
+
+ }
+
+ //A function to render your playlist when you the application is loaded
+ function renderPlaylist(playlists){
+  const playlist = document.getElementById('list');
+  const songItem = document.createElement('div');
+  const songAudio = document.createElement('audio');
+  const songAudioSource = document.createElement('source');
+  songAudioSource.src = playlists.previewUrl
+  songAudio.controls = true
+   songItem.innerHTML = `
+     <ol>
+    <p>${playlists.artist} - ${playlists.song}</p>
+    <ol>
+   `;
+
+   //Create a like emoji button
+  const likeButton = document.createElement('button');
+  likeButton.textContent = '❤️ Like'; // Use a heart emoji as the like button
+  likeButton.classList.add('likeBtn');
+
+    likeButton.addEventListener('click', () => {
+    likeButton.style.color = 'red'; // Turn the button red when liked
+    updateLikedSong(songObject); // Call a function to update the server
+ });
+
+  songAudio.appendChild(songAudioSource);
+  songItem.appendChild(songAudio);
+  playlist.appendChild(songItem);
+  playlist.appendChild(likeButton);
+
+ }
+
+ 
+ fetchPlaylist()
 
 
+ // A function for a PATCH request to update the liked song on the server
+ /*  function updateLikedSong(storeObject) {
+  storeObject()
+  fetch(`http://localhost:3000/playlists/${songObject.id}`, {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      liked: true
+
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log('Song liked and updated on the server:', data);
+    })
+    .catch(error => console.error('Failed to update liked song:', error));
+}
+
+// Calls the updateLikedSong function
+updateLikedSong(storeObject);*/
+
+
+
+
+ 
+ 
 
 
 
