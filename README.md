@@ -1,6 +1,13 @@
 # Simple Music Search Application
 
 # Description
+The application meets the following deliverables for a user;
+
+1. As a user, I should be able to search for specific songs, albums, or artists.The search results should be accurate and displayed in a user-friendly manner.
+
+2. As a user, I should be able to create and manage playlists.The application should allow me to add songs to playlists and reorder them as needed.
+
+3. As a user, I should be able to provide feedback on songs (e.g., liking, disliking) to improve the recommendations over time."
 
 # Set Up/ Installation 
 
@@ -23,10 +30,10 @@ Then, open the `index.html` file on your browser to run the application.
 ## Known Bugs
 - One bug that you might encounter in your console while running the application is: `ERR_FILE_NOT_FOUND`. 
   This will mean that the browser you are using is unable to retrieve the file or resource for the particular 
-  song you have inquired a search for. This maybe due to unstable internet connection.
-- After searching a song and adding it to your playlist, you will need to refresh the browser page for the patch  
-  request implemented by `Like button` and delete request implemented by `Delete button` to persist to
-  the server i.e avoiding `404 NOT FOUND` error. Otherwise when one has not queried a search and added a song immediately, it is not a must to refresh the page in order to perform the Patch and Delete requests from your playlist.
+  song you have inquired a search for. This may be due to unstable internet connection.
+- After searching a song and adding it to your playlist, you will need to refresh the browser page 
+  for the patch  request implemented by `Like button` and delete request implemented by `Delete button` to persist 
+  to the server i.e avoiding `404 NOT FOUND` error. Otherwise when one has not queried a search and added a song immediately, it is not a must to refresh the page in order to perform the Patch and Delete requests from your playlist.
 
 ## Technologies used
 - HTML
