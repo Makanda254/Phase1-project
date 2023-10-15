@@ -1,4 +1,4 @@
-# Music Application
+# Simple Music Search Application
 
 # Description
 
@@ -18,13 +18,22 @@ Test your server by visiting this route in the browser:
 
 Then, open the `index.html` file on your browser to run the application.
 
-** Ensure your internet connection is stable to facilitate smooth connection to `Itunes API`**.
+**Ensure your internet connection is stable to facilitate smooth connection to `Itunes API`**
 
+## Known Bugs
+- One bug that you might encounter in your console while running the application is: `ERR_FILE_NOT_FOUND`. 
+  This will mean that the browser you are using is unable to retrieve the file or resource for the particular 
+  song you have inquired a search for. This maybe due to unstable internet connection.
+- After searching a song and adding it to your playlist, you will need to refresh the browser page for the patch  
+  request implemented by `Like button` and delete request implemented by `Delete button` to persist to
+  the server i.e avoiding `404 NOT FOUND` error. Otherwise when one has not queried a search and added a song immediately, it is not a must to refresh the page in order to perform the Patch and Delete requests from your playlist.
 
 ## Technologies used
+- HTML
+- CSS
 - Javascript
-- Dev Tools
 - Terminal
+- Itunes API
 
 ## License
 MIT License
@@ -48,6 +57,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Acknowledgement
+This project was done to establish my personal progress in grasping content related on the three pillars of JavaScript programming namely; Recognizing JavaScript Events, Manipulating the DOM and Communicating with the Server. 
+
+ > **Note that the mentioned pillars are recommended by Flatiron School. 
+     It is not must for one to adhere to them.**
+
 
 
 ## Support and contact details
