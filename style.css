@@ -97,7 +97,7 @@ section {
 }
 
 section article {
-    width: calc(100% / 2- 5px);
+    width: calc(100% / 4 - 5px);
     border-radius: 3px;
     overflow: hidden;
     margin-bottom: 25px;
