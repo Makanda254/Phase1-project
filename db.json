@@ -1,0 +1,46 @@
+{
+  "playlists": [
+    {
+      "id": 1,
+      "artist": "Future",
+      "song": "Mask Off",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/d4/81/fa/d481faca-a098-9f4d-dd93-617c586aeff6/mzaf_12234195131165031037.plus.aac.p.m4a",
+      "liked": true
+    },
+    {
+      "id": 2,
+      "artist": "Drake",
+      "song": "God's Plan",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/40/ef/be/40efbe69-6e26-18cb-6f16-3ed4af6758bb/mzaf_3950845701956130416.plus.aac.p.m4a",
+      "liked": true
+    },
+    {
+      "id": 3,
+      "artist": "Migos",
+      "song": "Notice Me (feat. Post Malone)",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/1b/f0/31/1bf031b7-4041-f5cd-676d-3a670aa94b1e/mzaf_4881493649912770981.plus.aac.p.m4a",
+      "liked": false
+    },
+    {
+      "id": 4,
+      "artist": "Omah Lay",
+      "song": "soso",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/17/ef/12/17ef12d8-4561-b22e-922e-5a4de8b77657/mzaf_8839277967609491086.plus.aac.p.m4a",
+      "liked": true
+    },
+    {
+      "id": 5,
+      "artist": "BURUKLYN BOYZ, AJAY & Mr Right",
+      "song": "Dream Ya Kutoka Kwa Block",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/b4/0b/72/b40b72a2-e516-a20d-2101-4005ee7c6370/mzaf_9159074395750559435.plus.aac.p.m4a",
+      "liked": false
+    },
+    {
+      "id": 6,
+      "artist": "Lil Baby",
+      "song": "Close Friends",
+      "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/dc/5b/67/dc5b6702-0e72-c47d-9561-c48c261a41b3/mzaf_11021316642935061529.plus.aac.p.m4a",
+      "liked": false
+    }
+  ]
+}

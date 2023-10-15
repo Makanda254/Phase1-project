@@ -118,9 +118,7 @@ document.addEventListener('play', event => {
   songAudioSource.src = playlists.previewUrl
   songAudio.controls = true
    songItem.innerHTML = `
-     <ol>
     <p>${playlists.artist} - ${playlists.song}</p>
-    </ol>
     <div>
 
     </div>
@@ -130,8 +128,6 @@ document.addEventListener('play', event => {
     const likeButton = document.createElement('button');
     likeButton.textContent = '❤️ Like'; // Use a heart emoji as the like button
     likeButton.classList.add('likeBtn');
-
-
 
     likeButton.addEventListener('click', () => {
     likeButton.style.color = 'red'; // Turn the button red when liked
@@ -192,15 +188,6 @@ function deleteSong(id){
  .then(res => res.json())
  .then((list)=> console.log(list))
 }
-
-
-
-
-
- 
- 
-
-
 
 })
   

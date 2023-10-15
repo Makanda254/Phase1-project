@@ -3,9 +3,10 @@
 # Description
 The application meets the following deliverables for a user;
 
-1. As a user, I should be able to search for specific songs or artists.The search results should be accurate and displayed in a user-friendly manner.
+1. As a user, I should be able to search for specific songs or artists.The search results should be displayed in a user-friendly manner.
 
-2. As a user, I should be able to create and manage playlists.The application should allow me to add songs to playlists and reorder them by deleting them.
+2. As a user, I should be able to create and manage my playlist.The application should allow me to add songs to the   
+playlists and reorder them by deleting them.
 
 3. As a user, I should be able to provide feedback on songs (e.g., liking, disliking) to improve the recommendations over time."
 
